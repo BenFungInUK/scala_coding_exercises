@@ -8,6 +8,12 @@ class Exercise004(var dateTime: LocalDateTime) {
   // https://docs.scala-lang.org/overviews/scala-book/classes-aux-constructors.html
   // Try constructing a "LocalDateTime" from a "LocalDate"
   // You might need to default the time to be something like midnight
+  def this(date: LocalDate) = {
+    this(date.atStartOfDay())
+  }
 
-  def getDateTimeWithGigaSecond: LocalDateTime = null
+  def getDateTimeWithGigaSecond: LocalDateTime = {
+    val gigaDateTime = dateTime.plusSeconds(1000000000)
+    gigaDateTime
+  }
 }
