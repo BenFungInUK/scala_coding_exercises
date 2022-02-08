@@ -14,6 +14,11 @@ class Exercise003Test extends AnyFlatSpec {
     assert(exercise003.getIceCreamCode("Mango Sorbet") == 5)
   }
 
+  "An unknown ice cream" should "returned an error" in {
+    val thrown = intercept[UnsupportedOperationException]{exercise003.getIceCreamCode("XYZ")}
+    assert(thrown.getMessage === "Unknown ice-cream")
+  }
+
   "All available flavours" should "be correctly returned" in {
 
     val flavours = Array("Pistachio",
