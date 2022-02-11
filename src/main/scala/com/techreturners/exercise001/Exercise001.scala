@@ -24,12 +24,10 @@ class Exercise001 {
    */
   def countLinuxUsers(users: Seq[User]): Int = {
     val usersList = if(users == null) Seq.empty[User] else users
-    var count: Int = 0
-    for (user <- usersList) {
-      if (user.osType == "Linux")
-        count += 1
+    usersList.groupBy(_.osType).get("Linux") match {
+      case Some(s) => s.size
+      case None => 0
     }
-    count
   }
 
 }
